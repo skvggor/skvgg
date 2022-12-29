@@ -2,11 +2,83 @@
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<h1>Skvgg</h1>
-	</main>
+<Layout title="skvggor - software developer">
+  <main class="main">
+    <div class="painel">
+      <h1 class="text">~/skvggor</h1>
+      <span class="cursor"></span>
+    </div>
+
+    <div class="tagline">
+      <h2 class="text">Turning ideas into reality through creative software.</h2>
+    </div>
+  </main>
 </Layout>
 
 <style lang="styl">
+  .main
+    align-items center
+    display flex
+    flex-direction column
+    justify-content center
+    min-height 100vh
+    padding 0 20px
+
+  .painel
+    align-items center
+    color #fff
+    display flex
+    justify-content center
+    position relative
+
+    .text
+      background linear-gradient(#fa00ff, #0080a9)
+      font-size 50px
+      font-weight 800
+      margin 0 0 15px
+      position relative
+      -webkit-background-clip text
+      -webkit-text-fill-color transparent
+
+      @media (min-width: 1024px)
+        font-size 90px
+        margin 0 0 25px
+
+  .cursor
+    animation cursor 1.2s infinite
+    background-color #fff
+    height 50px
+    margin-left 6px
+    width 6px
+
+    @media (min-width: 1024px)
+      height 90px
+      margin-left 10px
+      width 10px
+
+  @keyframes cursor
+    0%
+      opacity 1
+    50%
+      opacity 0
+    100%
+      opacity 1
+
+  .tagline
+    align-items center
+    color #fff
+    display flex
+    flex-direction column
+    justify-content center
+    text-align center
+
+    .text
+      font-size 20px
+      font-weight 300
+      margin 0
+      max-width 440px
+
+      @media (min-width: 1024px)
+        font-size 30px
+        max-width 700px
 </style>
