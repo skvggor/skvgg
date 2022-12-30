@@ -1,0 +1,46 @@
+{
+  "opengraph": {
+    "title": "skvgg - software developer",
+    "description": "Turning ideas into reality through creative software.",
+    "image": "https://skvgg.com/images/skvgg.png",
+    "url": "https://skvgg.com"
+  },
+  "components": [
+    {
+      "id": 1,
+      "name": "site-tagline",
+      "title": "~/skvgg",
+      "tagline": "Turning ideas into reality through creative software."
+    },
+    {
+      "id": 2,
+      "name": "social-links",
+      "links": [
+        {
+          "id": 1,
+          "name": "github",
+          "url": "https://github.com/skvggor",
+          "icon": "github"
+        },
+        {
+          "id": 3,
+          "name": "twitter",
+          "url": "https://twitter.com/skvggor",
+          "icon": "twitter"
+        },
+        {
+          "id": 4,
+          "name": "strava",
+          "url": "https://www.strava.com/athletes/18616728",
+          "icon": "strava"
+        },
+        {
+          "id": 5,
+          "name": "lastfm",
+          "url": "https://last.fm/user/skvggor",
+          "icon": "lastfm"
+        }
+      ]
+    }
+  ]
+}

@@ -1,17 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro'
+
+import SiteTagline from '../components/SiteTagline.astro'
 ---
+<script>
+  const loading = () => {
+    const mainElement = document.querySelector('.main')
+
+    mainElement.classList.add('loaded')
+  }
+
+  // fake loading
+  setTimeout(loading, 1000)
+</script>
 
 <Layout title="skvggor - software developer">
   <main class="main">
-    <div class="panel">
-      <h1 class="text">~/skvggor</h1>
-      <span class="cursor"></span>
-    </div>
-
-    <div class="tagline">
-      <h2 class="text">Turning ideas into reality through creative software.</h2>
-    </div>
+    <SiteTagline />
   </main>
 </Layout>
 
@@ -22,63 +27,12 @@ import Layout from '../layouts/Layout.astro'
     flex-direction column
     justify-content center
     min-height 100vh
+    opacity 0
     padding 0 20px
+    transform scale(.95)
+    transition all 1s ease-in-out
 
-  .panel
-    align-items center
-    color #fff
-    display flex
-    justify-content center
-    position relative
-
-    .text
-      background linear-gradient(#fa00ff, #0080a9)
-      font-size 50px
-      font-weight 800
-      margin 0 0 15px
-      position relative
-      -webkit-background-clip text
-      -webkit-text-fill-color transparent
-
-      @media (min-width: 1024px)
-        font-size 90px
-        margin 0 0 25px
-
-  .cursor
-    animation cursor 1.2s infinite
-    background-color #fff
-    height 50px
-    margin-left 6px
-    width 6px
-
-    @media (min-width: 1024px)
-      height 90px
-      margin-left 10px
-      width 10px
-
-  @keyframes cursor
-    0%
+    &.loaded
       opacity 1
-    50%
-      opacity 0
-    100%
-      opacity 1
-
-  .tagline
-    align-items center
-    color #fff
-    display flex
-    flex-direction column
-    justify-content center
-    text-align center
-
-    .text
-      font-size 20px
-      font-weight 300
-      margin 0
-      max-width 440px
-
-      @media (min-width: 1024px)
-        font-size 30px
-        max-width 700px
+      transform scale(1)
 </style>
