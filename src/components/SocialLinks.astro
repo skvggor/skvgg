@@ -1,0 +1,48 @@
+---
+import data from '../content.json'
+
+const content = data.components[1]
+---
+
+<div class="links">
+  {content.links.map((link: {
+    url: string;
+    icon: string;
+    name: string;
+  }) => (
+    <a class="link" href={link.url}>
+      <img class="icon" src={link.icon} alt={link.name} />
+    </a>))
+  }
+</div>
+
+<style lang="styl">
+  primary = #55A0E6
+
+  .links
+    align-items center
+    display flex
+    justify-content space-between
+    margin 25px auto 0
+    max-width 320px
+    width 100%
+
+    .link
+      display block
+
+      img
+        background-color #fff
+        border-radius 50%
+        height 35px
+        padding 5px
+        transform rotate(10deg)
+        transition all 0.2s ease-in-out
+        width 35px
+
+        &:hover
+          background-color primary
+          transform rotate(0deg)
+</style>
+
+
+

@@ -20,25 +20,25 @@
           "id": 1,
           "name": "github",
           "url": "https://github.com/skvggor",
-          "icon": "github"
+          "icon": "/icon-github.svg"
         },
         {
           "id": 3,
           "name": "twitter",
           "url": "https://twitter.com/skvggor",
-          "icon": "twitter"
+          "icon": "/icon-twitter.svg"
         },
         {
           "id": 4,
           "name": "strava",
           "url": "https://www.strava.com/athletes/18616728",
-          "icon": "strava"
+          "icon": "/icon-strava.svg"
         },
         {
           "id": 5,
           "name": "lastfm",
           "url": "https://last.fm/user/skvggor",
-          "icon": "lastfm"
+          "icon": "/icon-lastfm.svg"
         }
       ]
     }

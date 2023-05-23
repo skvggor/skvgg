@@ -16,6 +16,8 @@ const content = data.components[0]
 </div>
 
 <style lang="styl">
+  primary = #55A0E6
+
   .panel
     align-items center
     color #fff
@@ -24,7 +26,7 @@ const content = data.components[0]
     position relative
 
     .text
-      background linear-gradient(#fa00ff, #0080a9)
+      background linear-gradient(primary, #000)
       font-size 50px
       font-weight 800
       margin 0 0 15px
@@ -38,7 +40,7 @@ const content = data.components[0]
 
   .cursor
     animation cursor 1.2s infinite
-    background-color #fff
+    background-color primary
     height 50px
     margin-left 6px
     width 6px
