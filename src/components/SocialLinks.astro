@@ -5,7 +5,7 @@ const content = data.components[1]
 ---
 
 <div class="links">
-  {content.links.map((link: {
+  {content.links?.map((link: {
     url: string;
     icon: string;
     name: string;

@@ -10,7 +10,7 @@
       "id": 1,
       "name": "site-tagline",
       "title": "~/skvgg",
-      "tagline": "Turning ideas into reality through creative software."
+      "tagline": "Marcos Lima: turning ideas into reality through creative software."
     },
     {
       "id": 2,
@@ -41,6 +41,11 @@
           "icon": "/icon-lastfm.svg"
         }
       ]
+    },
+    {
+      "id": 3,
+      "name": "last-fm",
+      "no-album-art": "/no-album-art.webp"
     }
   ]
 }
