@@ -1,23 +1,4 @@
 ---
-import data from '../content.json'
-
-const content = data.components[2]
-const noAlbumArt = content['no-album-art']
-
-const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=skvggor&format=json&api_key=df8ee1a832c074bd87168b37d8946004')
-const lastFMData = await response.json()
-const currentTrack = lastFMData.recenttracks.track[0]
-
-const trackData = {
-  image: currentTrack.image.reduce((accumulator: any, current: any) => {
-    if (current.size === 'large') accumulator = current['#text']
-
-    return accumulator
-  }) || noAlbumArt,
-  artist: currentTrack.artist['#text'],
-  name: currentTrack.name,
-  status: currentTrack['@attr'] ? currentTrack['@attr'].nowplaying : false,
-}
 ---
 
 <div class="lastFM">
@@ -122,3 +103,25 @@ const trackData = {
             font-weight 300
             margin 0
 </style>
+
+<script>
+  import data from '../content.json'
+
+  const content = data.components[2]
+  const noAlbumArt = content['no-album-art']
+
+  const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=skvggor&format=json&api_key=df8ee1a832c074bd87168b37d8946004')
+  const lastFMData = await response.json()
+  const currentTrack = lastFMData.recenttracks.track[0]
+
+  const trackData = {
+    image: currentTrack.image.reduce((accumulator: any, current: any) => {
+      if (current.size === 'large') accumulator = current['#text']
+
+      return accumulator
+    }) || noAlbumArt,
+    artist: currentTrack.artist['#text'],
+    name: currentTrack.name,
+    status: currentTrack['@attr'] ? currentTrack['@attr'].nowplaying : false,
+  }
+</script>
