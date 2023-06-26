@@ -1,8 +1,10 @@
 import { defineConfig } from 'astro/config'
-import nodejs from 'astrojs/node'
+import node from '@astrojs/node'
 
 // https://astro.build/config
 export default defineConfig({
-  adapter: 'nodejs()',
+  adapter: node({
+    mode: 'standalone'
+  }),
   output: 'hybrid',
 })
