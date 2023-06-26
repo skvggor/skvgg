@@ -1,41 +1,46 @@
 ---
-import data from '../content.json'
+export const prerender = false
+
+import data from "../content.json"
 
 const content = data.components[2]
-const noAlbumArt = content['no-album-art']
+const noAlbumArt = content["no-album-art"]
 
-const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=skvggor&format=json&api_key=df8ee1a832c074bd87168b37d8946004')
+const response = await fetch(
+  "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=skvggor&format=json&api_key=df8ee1a832c074bd87168b37d8946004"
+)
 const lastFMData = await response.json()
 const currentTrack = lastFMData.recenttracks.track[0]
 
 const trackData = {
-  image: currentTrack.image.reduce((accumulator: any, current: any) => {
-    if (current.size === 'large') accumulator = current['#text']
+  image:
+    currentTrack.image.reduce((accumulator: any, current: any) => {
+      if (current.size === "large") accumulator = current["#text"]
 
-    return accumulator
-  }) || noAlbumArt,
-  artist: currentTrack.artist['#text'],
+      return accumulator
+    }) || noAlbumArt,
+  artist: currentTrack.artist["#text"],
   name: currentTrack.name,
-  status: currentTrack['@attr'] ? currentTrack['@attr'].nowplaying : false,
+  status: currentTrack["@attr"] ? currentTrack["@attr"].nowplaying : false,
 }
 ---
 
-<div class="lastFM">
-  <div class="container">
-    <div class="player">
-      <div class={`image ${ trackData.status ? 'animate-pulse' : ''}`}>
-        <span class="spindle-hole" />
-        <img
-          class="image--img"
-          src={ trackData.image }
-          alt="Teste"
-        >
+<div class='lastFM'>
+  <div class='container'>
+    <div class='player'>
+      <div class={`image ${trackData.status ? "animate-pulse" : ""}`}>
+        <span class='spindle-hole'></span>
+        <img class='image--img' src={trackData.image} alt='Teste' />
       </div>
 
-      <div class="info">
-        <h3 class="info--status">▶️ { trackData.status ? 'Listening' : 'Listened' }:</h3>
-        <h3 class="info--track"> { trackData.name }</h3>
-        <h4 class="info--artist">by <span class="bold">{ trackData.artist }</span></h4>
+      <div class='info'>
+        <h3 class='info--status'>
+          ▶️ {trackData.status ? "Listening" : "Listened"}:
+        </h3>
+        <h3 class='info--track'>{trackData.name}</h3>
+        <h4 class='info--artist'>
+          by <span class='bold'>{trackData.artist}</span>
+        </h4>
       </div>
     </div>
   </div>
