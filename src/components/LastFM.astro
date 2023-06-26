@@ -1,0 +1,124 @@
+---
+import data from '../content.json'
+
+const content = data.components[2]
+const noAlbumArt = content['no-album-art']
+
+const response = await fetch('https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=skvggor&format=json&api_key=df8ee1a832c074bd87168b37d8946004')
+const lastFMData = await response.json()
+const currentTrack = lastFMData.recenttracks.track[0]
+
+const trackData = {
+  image: currentTrack.image.reduce((accumulator: any, current: any) => {
+    if (current.size === 'large') accumulator = current['#text']
+
+    return accumulator
+  }) || noAlbumArt,
+  artist: currentTrack.artist['#text'],
+  name: currentTrack.name,
+  status: currentTrack['@attr'] ? currentTrack['@attr'].nowplaying : false,
+}
+---
+
+<div class="lastFM">
+  <div class="container">
+    <div class="player">
+      <div class={`image ${ trackData.status ? 'animate-pulse' : ''}`}>
+        <span class="spindle-hole" />
+        <img
+          class="image--img"
+          src={ trackData.image }
+          alt="Teste"
+        >
+      </div>
+
+      <div class="info">
+        <h3 class="info--status">▶️ { trackData.status ? 'Listening' : 'Listened' }:</h3>
+        <h3 class="info--track"> { trackData.name }</h3>
+        <h4 class="info--artist">by <span class="bold">{ trackData.artist }</span></h4>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="styl">
+  primary = #55A0E6
+
+  @keyframes animate-pulse
+    0%
+      opacity .7
+    50%
+      opacity 1
+    100%
+      opacity .7
+
+  @keyframes disc
+    0%
+      transform rotate(0deg)
+    100%
+      transform rotate(360deg)
+
+  .lastFM
+    .bold
+      font-weight 600
+
+    .container
+      align-items center
+      display flex
+      flex-direction column
+      justify-content center
+
+      .player
+        display flex
+        width 100%
+
+        .image
+          border 2px solid #222
+          border-radius 50%
+          height 100px
+          min-width 100px
+          overflow hidden
+          position relative
+
+          &.animate-pulse
+            animation animate-pulse 1s ease-in-out infinite, disc 10s linear infinite
+
+          &--img
+            height 100%
+            object-fit cover
+            width 100%
+
+          .spindle-hole
+            background #060606
+            border-radius 50%
+            height 10px
+            left 50%
+            position absolute
+            top 50%
+            transform translate(-50%, -50%)
+            width 10px
+
+        .info
+          display flex
+          flex-direction column
+          justify-content center
+          margin-left 10px
+
+          &--status
+            color #aaa
+            font-size 10px
+            font-weight 600
+            margin 0 0 5px 0
+
+          &--track
+            color #444
+            font-size 14px
+            font-weight 600
+            margin 0 0 5px 0
+
+          &--artist
+            color darken(#888, 40%)
+            font-size 12px
+            font-weight 300
+            margin 0
+</style>

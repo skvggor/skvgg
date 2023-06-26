@@ -3,12 +3,21 @@ import Layout from '../layouts/Layout.astro'
 
 import SiteTagline from '../components/SiteTagline.astro'
 import SocialLinks from '../components/SocialLinks.astro'
+import LastFM from '../components/LastFM.astro'
 ---
 <script>
   const loading = () => {
-    const mainElement = document.querySelector('.main')
+    const mainElement = document.querySelectorAll('.main > *')
+    const DELAY = 250
 
-    mainElement.classList.add('loaded')
+    const addClassWithDelay = (element: any, index: any) => {
+      setTimeout(() => {
+        element.classList.add('loaded')
+      }, DELAY * index)
+    }
+
+    mainElement?.forEach((element, index) =>
+      addClassWithDelay(element, index))
   }
 
   // fake loading
@@ -19,6 +28,10 @@ import SocialLinks from '../components/SocialLinks.astro'
   <main class="main">
     <SiteTagline />
     <SocialLinks />
+
+    <div class="player">
+      <LastFM />
+    </div>
   </main>
 </Layout>
 
@@ -29,12 +42,19 @@ import SocialLinks from '../components/SocialLinks.astro'
     flex-direction column
     justify-content center
     min-height 100vh
-    opacity 0
     padding 0 20px
-    transform scale(.95)
-    transition all 1s ease-in-out
 
-    &.loaded
+    :global(> *)
+      opacity 0
+      transform scale(.95)
+      transition all 1s ease-in-out
+
+    :global(> .loaded)
       opacity 1
       transform scale(1)
+
+    .player
+      bottom 20px
+      margin 0 20px
+      position absolute
 </style>
