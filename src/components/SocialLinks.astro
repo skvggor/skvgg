@@ -1,11 +1,18 @@
 ---
-import data from '../content.json'
+export interface Props {
+  data: {
+    links: {
+      url: string
+      icon: string
+      name: string
+    }[]
+  }
+}
 
-const content = data.components[1]
+const { data } = Astro.props
 ---
-
 <div class="links">
-  {content.links?.map((link: {
+  {data.links?.map((link: {
     url: string;
     icon: string;
     name: string;
@@ -33,15 +40,15 @@ const content = data.components[1]
       img
         background-color #fff
         border-radius 50%
-        height 35px
+        height 20px
         padding 5px
-        transform rotate(10deg)
+        transform rotate(5deg)
         transition all 0.2s ease-in-out
-        width 35px
+        width 20px
 
         &:hover
           background-color primary
-          transform rotate(0deg)
+          transform rotate(-5deg)
 </style>
 
 
