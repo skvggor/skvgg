@@ -1,8 +1,12 @@
 ---
-import data from '../content.json'
+export interface Props {
+  data: {
+    'no-album-art': string
+  }
+}
 
-const content = data.components[2]
-const noAlbumArt = content['no-album-art']
+const { data } = Astro.props
+const noAlbumArt = data['no-album-art']
 
 const response = await fetch(
   'https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=skvggor&format=json&api_key=df8ee1a832c074bd87168b37d8946004'
@@ -22,7 +26,6 @@ const trackData = {
   status: currentTrack['@attr'] ? currentTrack['@attr'].nowplaying : false,
 }
 ---
-
 <div class="lastFM">
   <div class="container">
     <div class="player">

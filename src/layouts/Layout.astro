@@ -1,12 +1,19 @@
 ---
-
 import '@fontsource/jetbrains-mono'
 
 export interface Props {
-  title: string;
+  data: {
+    title: string
+    description: string
+    author: string
+    keywords: string
+    "primary-color": string
+    image: string
+    url: string
+  }
 }
 
-const { title } = Astro.props;
+const { data } = Astro.props
 ---
 
 <!DOCTYPE html>
@@ -14,9 +21,22 @@ const { title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+
+    <meta property="og:title" content={data.title} />
+    <meta property="og:description" content={data.description} />
+    <meta property="og:image" content={data.image} />
+    <meta property="og:url" content={data.url} />
+    <meta property="og:site_name" content={data.author} />
+
+    <meta name="author" content={data.author} />
+    <meta name="keywords" content={data.keywords} />
+    <meta name="theme-color" content={data["primary-color"]} />
+
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{data.title}</title>
   </head>
   <body class="site">
     <slot />
