@@ -1,16 +1,19 @@
 {
   "opengraph": {
-    "title": "skvgg - software developer",
-    "description": "Turning ideas into reality through creative software.",
-    "image": "https://skvgg.com/images/skvgg.png",
-    "url": "https://skvgg.com"
+    "title": "marcos lima - skvgg - software developer",
+    "description": "turning ideas into reality through creative software.",
+    "author": "marcos lima - skvggor",
+    "keywords": "software developer, web development, experienced professional, unilever, honda, claro (américa móvil), subaru, popeyes, web applications, vip br telecom, tech lead, team management, user-friendly web experiences, linux, python, vue.js, react, apis, jamstack, design skills, figma, inkscape, typography, interface design, literature, engaging web experiences, client services, latest technologies, product development, team leadership",
+    "primary-color": "#55A0E6",
+    "image": "/og-image.jpg",
+    "url": "https://trve.in"
   },
   "components": [
     {
       "id": 1,
       "name": "site-tagline",
       "title": "~/skvgg",
-      "tagline": "Marcos Lima: turning ideas into reality through creative software."
+      "tagline": "marcos lima: turning ideas into reality through creative software."
     },
     {
       "id": 2,
@@ -23,20 +26,32 @@
           "icon": "/icon-github.svg"
         },
         {
+          "id": 2,
+          "name": "leetcode",
+          "url": "https://leetcode.com/skvggor/",
+          "icon": "/icon-leetcode.svg"
+        },
+        {
           "id": 3,
+          "name": "linkedin",
+          "url": "https://www.linkedin.com/in/marcker",
+          "icon": "/icon-linkedin.svg"
+        },
+        {
+          "id": 4,
           "name": "twitter",
           "url": "https://twitter.com/skvggor",
           "icon": "/icon-twitter.svg"
         },
         {
-          "id": 4,
+          "id": 5,
           "name": "strava",
           "url": "https://www.strava.com/athletes/18616728",
           "icon": "/icon-strava.svg"
         },
         {
-          "id": 5,
-          "name": "lastfm",
+          "id": 6,
+          "name": "last.fm",
           "url": "https://last.fm/user/skvggor",
           "icon": "/icon-lastfm.svg"
         }

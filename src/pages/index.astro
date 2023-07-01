@@ -1,4 +1,6 @@
 ---
+import content from '../../src/content.json'
+
 import Layout from '../layouts/Layout.astro'
 
 import SiteTagline from '../components/SiteTagline.astro'
@@ -8,7 +10,7 @@ import LastFM from '../components/LastFM.astro'
 <script>
   const loading = () => {
     const mainElement = document.querySelectorAll('.main > *')
-    const DELAY = 250
+    const DELAY = Math.floor(Math.random() * 250)
 
     const addClassWithDelay = (element: any, index: any) => {
       setTimeout(() => {
@@ -20,17 +22,16 @@ import LastFM from '../components/LastFM.astro'
       addClassWithDelay(element, index))
   }
 
-  // fake loading
   setTimeout(loading, 1000)
 </script>
 
-<Layout title="skvggor - software developer">
+<Layout data={content.opengraph}>
   <main class="main">
-    <SiteTagline />
-    <SocialLinks />
+    <SiteTagline data={content.components[0]} />
+    <SocialLinks data={content.components[1]} />
 
     <div class="player">
-      <LastFM />
+      <LastFM data={content.components[2]} />
     </div>
   </main>
 </Layout>

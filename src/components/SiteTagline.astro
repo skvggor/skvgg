@@ -1,17 +1,21 @@
 ---
-import data from '../content.json'
+export interface Props {
+  data: {
+    title: string
+    tagline: string
+  }
+}
 
-const content = data.components[0]
+const { data } = Astro.props
 ---
-
 <div class="site-name">
   <div class="panel">
-    <h1 class="text">{content.title}</h1>
+    <h1 class="text">{data.title}</h1>
     <span class="cursor"></span>
   </div>
 
   <div class="tagline">
-    <h2 class="text">{content.tagline}</h2>
+    <h2 class="text">{data.tagline}</h2>
   </div>
 </div>
 
