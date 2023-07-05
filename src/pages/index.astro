@@ -6,6 +6,7 @@ import Layout from '../layouts/Layout.astro'
 import SiteTagline from '../components/SiteTagline.astro'
 import SocialLinks from '../components/SocialLinks.astro'
 import LastFM from '../components/LastFM.astro'
+import Strava from '../components/Strava.astro'
 ---
 <script>
   const loading = () => {
@@ -32,6 +33,10 @@ import LastFM from '../components/LastFM.astro'
 
     <div class="player">
       <LastFM data={content.components[2]} />
+    </div>
+
+    <div class="strava">
+      <Strava data={content.components[3]} />
     </div>
   </main>
 </Layout>

@@ -1,0 +1,23 @@
+---
+export interface Props {
+  data: {
+  }
+}
+
+const { data } = Astro.props
+
+const response = await fetch(
+  'http://strava-api.trve.in:3000/api/v1/strava/total-distance/current-year'
+)
+const stravaData = await response.json()
+
+console.log((stravaData.distance/1000).toFixed(3),  'km')
+---
+<div class="strava">
+  <div class="container">
+  </div>
+</div>
+
+<style lang='styl'>
+  primary = #55A0E6
+</style>
