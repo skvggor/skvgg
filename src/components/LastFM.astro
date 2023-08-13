@@ -1,17 +1,17 @@
 ---
 export interface Props {
   data: {
-    'no-album-art': string
+    'no-album-art': string,
+    'api-url': string,
   }
 }
 
 const { data } = Astro.props
 const noAlbumArt = data['no-album-art']
 
-const response = await fetch(
-  'https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=skvggor&format=json&api_key=df8ee1a832c074bd87168b37d8946004'
-)
+const response = await fetch(data['api-url'])
 const lastFMData = await response.json()
+
 const currentTrack = lastFMData.recenttracks.track[0]
 
 const trackData = {
@@ -39,7 +39,7 @@ const trackData = {
       </div>
 
       <div class="info">
-        <h3 class="info--status">🔊 {trackData.status ? 'Listening' : 'Listened'}:</h3>
+        <h3 class="info--status">🔊 {trackData.status ? 'Listening' : 'Listened'}</h3>
         <h3 class="info--track">{trackData.name}</h3>
         <h4 class="info--artist">by <span class="bold">{trackData.artist}</span></h4>
       </div>
@@ -81,13 +81,13 @@ const trackData = {
         .image
           border 2px solid #222
           border-radius 50%
-          height 100px
-          min-width 100px
+          height 50px
+          min-width 50px
           overflow hidden
           position relative
 
           &.animate-pulse
-            animation animate-pulse 1s ease-in-out infinite, disc 10s linear infinite
+            animation animate-pulse 1s ease-in-out infinite, disc .05s linear infinite
 
           &--img
             height 100%
@@ -97,12 +97,12 @@ const trackData = {
           .spindle-hole
             background #060606
             border-radius 50%
-            height 10px
+            height 5px
             left 50%
             position absolute
             top 50%
             transform translate(-50%, -50%)
-            width 10px
+            width 5px
 
         .info
           display flex
@@ -115,6 +115,7 @@ const trackData = {
             font-size 10px
             font-weight 600
             margin 0 0 5px 0
+            text-transform uppercase
 
           &--track
             color #444
