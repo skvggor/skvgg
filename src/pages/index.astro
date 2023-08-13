@@ -6,6 +6,7 @@ import Layout from '../layouts/Layout.astro'
 import SiteTagline from '../components/SiteTagline.astro'
 import SocialLinks from '../components/SocialLinks.astro'
 import LastFM from '../components/LastFM.astro'
+import Strava from '../components/Strava.astro'
 ---
 <script>
   const loading = () => {
@@ -30,8 +31,13 @@ import LastFM from '../components/LastFM.astro'
     <SiteTagline data={content.components[0]} />
     <SocialLinks data={content.components[1]} />
 
-    <div class="player">
-      <LastFM data={content.components[2]} />
+    <div class="features">
+      <div class="strava">
+        <Strava data={content.components[3]} />
+      </div>
+      <div class="player">
+        <LastFM data={content.components[2]} />
+      </div>
     </div>
   </main>
 </Layout>
@@ -54,8 +60,32 @@ import LastFM from '../components/LastFM.astro'
       opacity 1
       transform scale(1)
 
-    .player
+    .features
+      align-items center
       bottom 20px
+      display flex
+      justify-content center
       margin 0 20px
       position absolute
+      width 100%
+
+      .strava
+        border-right 1px solid #222
+        display flex
+        justify-content center
+        padding-right 10px
+        width 30%
+
+        @media (min-width: 1024px)
+          width 50%
+
+      .player
+        display flex
+        justify-content center
+        padding-left 10px
+        padding-right 10px
+        width 70%
+
+        @media (min-width: 1024px)
+          width 50%
 </style>

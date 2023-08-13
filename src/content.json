@@ -60,7 +60,13 @@
     {
       "id": 3,
       "name": "last-fm",
-      "no-album-art": "/no-album-art.webp"
+      "no-album-art": "/no-album-art.webp",
+      "api-url": "https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=skvggor&format=json&api_key=df8ee1a832c074bd87168b37d8946004"
+    },
+    {
+      "id": 4,
+      "name": "strava",
+      "api-url": "http://strava-api.trve.in:3000/api/v1/strava/total-distance/current-year"
     }
   ]
 }
