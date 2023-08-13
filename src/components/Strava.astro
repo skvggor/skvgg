@@ -1,0 +1,48 @@
+---
+export interface Props {
+  data: {
+    'api-url': string
+  }
+}
+
+const { data } = Astro.props
+
+const response = await fetch(data['api-url'])
+const stravaData = await response.json()
+
+const totalKM = (stravaData.distance / 1000).toFixed(3)
+const currentYear = new Date().getFullYear()
+---
+
+<div class="strava">
+  <div class="container">
+    <div class="title">
+      <span class="title--text">🚴‍♂️ { currentYear }</span>
+    </div>
+    <div class="total">
+      <span class="total--text">{ totalKM } km</span>
+    </div>
+  </div>
+</div>
+
+<style lang='styl'>
+  primary = #55A0E6
+
+  .container
+    color primary
+
+    .title
+      &--text
+        color #aaa
+        font-size 10px
+        font-weight 600
+        text-transform uppercase
+        margin 0 0 5px 0
+
+    .total
+      &--text
+        color #444
+        font-size 14px
+        font-weight 600
+        margin 0 0 5px 0
+</style>
