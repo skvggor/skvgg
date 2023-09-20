@@ -1,7 +1,7 @@
 {
   "opengraph": {
-    "title": "marcos lima - skvgg - software developer",
-    "description": "turning ideas into reality through creative software.",
+    "title": "marcos lima ~ low profile problem solver",
+    "description": "skvgg ~ low profile problem solver: turning ideas into reality through creative software.",
     "author": "marcos lima - skvggor",
     "keywords": "software developer, web development, experienced professional, unilever, honda, claro (américa móvil), subaru, popeyes, web applications, vip br telecom, tech lead, team management, user-friendly web experiences, linux, python, vue.js, react, apis, jamstack, design skills, figma, inkscape, typography, interface design, literature, engaging web experiences, client services, latest technologies, product development, team leadership",
     "primary-color": "#55A0E6",
@@ -12,8 +12,8 @@
     {
       "id": 1,
       "name": "site-tagline",
-      "title": "~/skvgg",
-      "tagline": "marcos lima: turning ideas into reality through creative software."
+      "title": "/home/skvgg",
+      "tagline": "~ low profile problem solver."
     },
     {
       "id": 2,
