@@ -39,6 +39,12 @@ const { data } = Astro.props
     <title>{data.title}</title>
   </head>
   <body class="site">
+    <span class="grid-line"></span>
+    <span class="grid-line"></span>
+    <span class="grid-line"></span>
+    <span class="grid-line"></span>
+    <span class="grid-line"></span>
+
     <slot />
   </body>
 </html>
@@ -51,4 +57,37 @@ const { data } = Astro.props
     margin 0
     overflow hidden
     width 100vw
+
+    .grid-line
+      background-color #222
+      height 100vh
+      position absolute
+      width 1px
+
+      for $i in (1..5)
+        $left = $i * 25
+
+        &:nth-child({$i})
+          left unit($left, vw)
+
+      &:nth-child(4)
+        display none
+
+      &:nth-child(5)
+        display none
+
+      @media (min-width: 1024px)
+        for $i in (1..5)
+          $left = $i * 20
+
+          &:nth-child({$i})
+            left unit($left, vw)
+
+        &:nth-child(4)
+          display block
+          left 80vw
+
+        &:nth-child(5)
+          display block
+          left 100vw
 </style>
